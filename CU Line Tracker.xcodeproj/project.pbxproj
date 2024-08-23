@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		B6CD344B2C791AFF00A4D9AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD34322C791AFD00A4D9AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6CD34392C791AFD00A4D9AF;
+			remoteInfo = "CU Line Tracker";
+		};
+		B6CD34552C791AFF00A4D9AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6CD34322C791AFD00A4D9AF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6CD34392C791AFD00A4D9AF;
+			remoteInfo = "CU Line Tracker";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B6CD343A2C791AFD00A4D9AF /* CU Line Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CU Line Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6CD344A2C791AFF00A4D9AF /* CU Line TrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CU Line TrackerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6CD34542C791AFF00A4D9AF /* CU Line TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CU Line TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B6CD343C2C791AFD00A4D9AF /* CU Line Tracker */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "CU Line Tracker";
+			sourceTree = "<group>";
+		};
+		B6CD344D2C791AFF00A4D9AF /* CU Line TrackerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "CU Line TrackerTests";
+			sourceTree = "<group>";
+		};
+		B6CD34572C791AFF00A4D9AF /* CU Line TrackerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "CU Line TrackerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6CD34372C791AFD00A4D9AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6CD34472C791AFF00A4D9AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6CD34512C791AFF00A4D9AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B6CD34312C791AFD00A4D9AF = {
+			isa = PBXGroup;
+			children = (
+				B6CD343C2C791AFD00A4D9AF /* CU Line Tracker */,
+				B6CD344D2C791AFF00A4D9AF /* CU Line TrackerTests */,
+				B6CD34572C791AFF00A4D9AF /* CU Line TrackerUITests */,
+				B6CD343B2C791AFD00A4D9AF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B6CD343B2C791AFD00A4D9AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6CD343A2C791AFD00A4D9AF /* CU Line Tracker.app */,
+				B6CD344A2C791AFF00A4D9AF /* CU Line TrackerTests.xctest */,
+				B6CD34542C791AFF00A4D9AF /* CU Line TrackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B6CD34392C791AFD00A4D9AF /* CU Line Tracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6CD345E2C791AFF00A4D9AF /* Build configuration list for PBXNativeTarget "CU Line Tracker" */;
+			buildPhases = (
+				B6CD34362C791AFD00A4D9AF /* Sources */,
+				B6CD34372C791AFD00A4D9AF /* Frameworks */,
+				B6CD34382C791AFD00A4D9AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B6CD343C2C791AFD00A4D9AF /* CU Line Tracker */,
+			);
+			name = "CU Line Tracker";
+			packageProductDependencies = (
+			);
+			productName = "CU Line Tracker";
+			productReference = B6CD343A2C791AFD00A4D9AF /* CU Line Tracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6CD34492C791AFF00A4D9AF /* CU Line TrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6CD34612C791AFF00A4D9AF /* Build configuration list for PBXNativeTarget "CU Line TrackerTests" */;
+			buildPhases = (
+				B6CD34462C791AFF00A4D9AF /* Sources */,
+				B6CD34472C791AFF00A4D9AF /* Frameworks */,
+				B6CD34482C791AFF00A4D9AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6CD344C2C791AFF00A4D9AF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B6CD344D2C791AFF00A4D9AF /* CU Line TrackerTests */,
+			);
+			name = "CU Line TrackerTests";
+			packageProductDependencies = (
+			);
+			productName = "CU Line TrackerTests";
+			productReference = B6CD344A2C791AFF00A4D9AF /* CU Line TrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B6CD34532C791AFF00A4D9AF /* CU Line TrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6CD34642C791AFF00A4D9AF /* Build configuration list for PBXNativeTarget "CU Line TrackerUITests" */;
+			buildPhases = (
+				B6CD34502C791AFF00A4D9AF /* Sources */,
+				B6CD34512C791AFF00A4D9AF /* Frameworks */,
+				B6CD34522C791AFF00A4D9AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6CD34562C791AFF00A4D9AF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B6CD34572C791AFF00A4D9AF /* CU Line TrackerUITests */,
+			);
+			name = "CU Line TrackerUITests";
+			packageProductDependencies = (
+			);
+			productName = "CU Line TrackerUITests";
+			productReference = B6CD34542C791AFF00A4D9AF /* CU Line TrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6CD34322C791AFD00A4D9AF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
+				LastUpgradeCheck = 1610;
+				TargetAttributes = {
+					B6CD34392C791AFD00A4D9AF = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					B6CD34492C791AFF00A4D9AF = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = B6CD34392C791AFD00A4D9AF;
+					};
+					B6CD34532C791AFF00A4D9AF = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = B6CD34392C791AFD00A4D9AF;
+					};
+				};
+			};
+			buildConfigurationList = B6CD34352C791AFD00A4D9AF /* Build configuration list for PBXProject "CU Line Tracker" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B6CD34312C791AFD00A4D9AF;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B6CD343B2C791AFD00A4D9AF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6CD34392C791AFD00A4D9AF /* CU Line Tracker */,
+				B6CD34492C791AFF00A4D9AF /* CU Line TrackerTests */,
+				B6CD34532C791AFF00A4D9AF /* CU Line TrackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6CD34382C791AFD00A4D9AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6CD34482C791AFF00A4D9AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6CD34522C791AFF00A4D9AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6CD34362C791AFD00A4D9AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6CD34462C791AFF00A4D9AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6CD34502C791AFF00A4D9AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6CD344C2C791AFF00A4D9AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6CD34392C791AFD00A4D9AF /* CU Line Tracker */;
+			targetProxy = B6CD344B2C791AFF00A4D9AF /* PBXContainerItemProxy */;
+		};
+		B6CD34562C791AFF00A4D9AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6CD34392C791AFD00A4D9AF /* CU Line Tracker */;
+			targetProxy = B6CD34552C791AFF00A4D9AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B6CD345C2C791AFF00A4D9AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B6CD345D2C791AFF00A4D9AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B6CD345F2C791AFF00A4D9AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CU Line Tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 2N89RNQ8RT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cedarville.itm3300.aantrim246.CU-Line-Tracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6CD34602C791AFF00A4D9AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CU Line Tracker/Preview Content\"";
+				DEVELOPMENT_TEAM = 2N89RNQ8RT;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cedarville.itm3300.aantrim246.CU-Line-Tracker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B6CD34622C791AFF00A4D9AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N89RNQ8RT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cedarville.itm3300.aantrim246.CU-Line-TrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CU Line Tracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CU Line Tracker";
+			};
+			name = Debug;
+		};
+		B6CD34632C791AFF00A4D9AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N89RNQ8RT;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cedarville.itm3300.aantrim246.CU-Line-TrackerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CU Line Tracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CU Line Tracker";
+			};
+			name = Release;
+		};
+		B6CD34652C791AFF00A4D9AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N89RNQ8RT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cedarville.itm3300.aantrim246.CU-Line-TrackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CU Line Tracker";
+			};
+			name = Debug;
+		};
+		B6CD34662C791AFF00A4D9AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N89RNQ8RT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cedarville.itm3300.aantrim246.CU-Line-TrackerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CU Line Tracker";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6CD34352C791AFD00A4D9AF /* Build configuration list for PBXProject "CU Line Tracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6CD345C2C791AFF00A4D9AF /* Debug */,
+				B6CD345D2C791AFF00A4D9AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6CD345E2C791AFF00A4D9AF /* Build configuration list for PBXNativeTarget "CU Line Tracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6CD345F2C791AFF00A4D9AF /* Debug */,
+				B6CD34602C791AFF00A4D9AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6CD34612C791AFF00A4D9AF /* Build configuration list for PBXNativeTarget "CU Line TrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6CD34622C791AFF00A4D9AF /* Debug */,
+				B6CD34632C791AFF00A4D9AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6CD34642C791AFF00A4D9AF /* Build configuration list for PBXNativeTarget "CU Line TrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6CD34652C791AFF00A4D9AF /* Debug */,
+				B6CD34662C791AFF00A4D9AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B6CD34322C791AFD00A4D9AF /* Project object */;
+}
