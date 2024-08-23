@@ -1,24 +1,29 @@
-//
-//  ContentView.swift
-//  CU Line Tracker
-//
-//  Created by Asher Antrim on 8/23/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var pandaExpressLine: Int = 0
+    @State private var chickFilALine: Int = 0
+    @State private var chucksLine: Int = 0
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            LineLengthView(pandaExpressLine: $pandaExpressLine, chickFilALine: $chickFilALine, chucksLine: $chucksLine)
+                .tabItem {
+                    Image(systemName: "list.number")
+                    Text("View Lines")
+                }
+            
+            InputLengthView(pandaExpressLine: $pandaExpressLine, chickFilALine: $chickFilALine, chucksLine: $chucksLine)
+                .tabItem {
+                    Image(systemName: "pencil")
+                    Text("Update Length")
+                }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
