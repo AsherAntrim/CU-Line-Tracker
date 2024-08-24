@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B6CDF7532C7923B200CBFE57 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B6CDF7522C7923B200CBFE57 /* FirebaseAnalytics */; };
+		B6CDF7552C7923B200CBFE57 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B6CDF7542C7923B200CBFE57 /* FirebaseDatabase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B6CD344B2C791AFF00A4D9AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CDF7552C7923B200CBFE57 /* FirebaseDatabase in Frameworks */,
+				B6CDF7532C7923B200CBFE57 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = "CU Line Tracker";
 			packageProductDependencies = (
+				B6CDF7522C7923B200CBFE57 /* FirebaseAnalytics */,
+				B6CDF7542C7923B200CBFE57 /* FirebaseDatabase */,
 			);
 			productName = "CU Line Tracker";
 			productReference = B6CD343A2C791AFD00A4D9AF /* CU Line Tracker.app */;
@@ -195,6 +204,9 @@
 			);
 			mainGroup = B6CD34312C791AFD00A4D9AF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B6CDF7512C7923B200CBFE57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B6CD343B2C791AFD00A4D9AF /* Products */;
 			projectDirPath = "";
@@ -558,6 +570,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6CDF7512C7923B200CBFE57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B6CDF7522C7923B200CBFE57 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6CDF7512C7923B200CBFE57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B6CDF7542C7923B200CBFE57 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6CDF7512C7923B200CBFE57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B6CD34322C791AFD00A4D9AF /* Project object */;
 }

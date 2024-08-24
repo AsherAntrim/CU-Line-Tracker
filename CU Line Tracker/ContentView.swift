@@ -18,12 +18,15 @@ struct ContentView: View {
                     Image(systemName: "pencil")
                     Text("Update Length")
                 }
+            ChucksMenuView()
+                .tabItem {
+                    Image(systemName: "book.fill")
+                    Text("Chuck's Menu")
+                }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }
