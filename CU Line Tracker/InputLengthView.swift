@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseDatabase
+import FirebaseAuth
 
 struct InputLengthView: View {
     @Binding var pandaExpressLine: Int
@@ -8,14 +9,12 @@ struct InputLengthView: View {
 
     @State private var selectedPlace: String = "Panda Express"
     @State private var newLineLength: Int = 1  // Changed to Int
+    @State private var errorMessage: String = ""
 
     // Define custom colors for Gold and Blue
     let goldColor = Color(red: 231/255, green: 164/255, blue: 60/255) // Gold
     let blueColor = Color(red: 23/255, green: 37/255, blue: 54/255) // Blue
     let whiteColor = Color.white
-
-    // Food places options
-    let foodPlaces = ["Panda Express", "Chick-fil-A", "Chuck's"]
 
     // Firebase Realtime Database reference
     let ref = Database.database().reference()
@@ -23,114 +22,132 @@ struct InputLengthView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-
-                // Optional: Add Cedarville or other image/logo to fill space
-                Image("cedarville") // Ensure this is in Assets.xcassets
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 150) // Adjust height as necessary
-                    .padding(.top, 20)
-
-                // Main Heading
+                
                 Text("Update Line Length")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(blueColor)
-                    .padding(.top, 10)
+                    .padding(.top, 40)
 
-                // Select Place and Line Length Section with Wheel Pickers
-                VStack(spacing: 30) {
-                    // Food Place Picker (Wheel)
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Select Place")
-                            .font(.headline)
-                            .foregroundColor(blueColor)
-                        
-                        Picker("Select Place", selection: $selectedPlace) {
-                            ForEach(foodPlaces, id: \.self) {
-                                Text($0)
-                            }
-                        }
-                        .pickerStyle(WheelPickerStyle()) // Use wheel picker style
-                        .frame(height: 100) // Adjust picker height
-                        .clipped() // Prevent clipping of the picker
-                        .background(whiteColor)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                    }
-
-                    // Line Length Picker (Wheel)
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Line Length (0 to 10)")
-                            .font(.headline)
-                            .foregroundColor(blueColor)
-                        
-                        Picker("Line Length", selection: $newLineLength) {
-                            ForEach(0..<11) { number in
-                                Text("\(number)").tag(number)
-                            }
-                        }
-                        .pickerStyle(WheelPickerStyle()) // Use wheel picker style
-                        .frame(height: 100) // Adjust picker height
-                        .clipped() // Prevent clipping of the picker
-                        .background(whiteColor)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                    }
-
-                    // Update Button
-                    Button(action: {
-                        updateLineLength()
-                    }) {
-                        Text("Update")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(blueColor)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                    }
+                if !errorMessage.isEmpty {
+                    Text(errorMessage)
+                        .foregroundColor(errorMessage.contains("successfully") ? .green : .red)
+                        .font(.caption)
+                        .padding()
                 }
-                .padding()
-                .background(goldColor.opacity(0.1))
-                .cornerRadius(15)
+
+                // Select Place Section
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("SELECT PLACE")
+                        .font(.headline)
+                        .foregroundColor(blueColor)
+                    Picker("Place", selection: $selectedPlace) {
+                        Text("Panda Express").tag("Panda Express")
+                        Text("Chick-fil-A").tag("Chick-fil-A")
+                        Text("Chuck's").tag("Chuck's")
+                    }
+                    .pickerStyle(WheelPickerStyle()) // Use WheelPickerStyle for a scrolling wheel effect
+                    .background(whiteColor)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                }
                 .padding(.horizontal)
 
-                Spacer(minLength: 50) // Add smaller spacer to reduce extra empty space
+                // Line Length Section
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("LINE LENGTH (1 TO 10)")
+                        .font(.headline)
+                        .foregroundColor(blueColor)
+                    Picker("Line Length", selection: $newLineLength) {
+                        ForEach(1...10, id: \.self) { length in
+                            Text("\(length)").tag(length)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle()) // Use WheelPickerStyle for the line length as well
+                    .background(whiteColor)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                }
+                .padding(.horizontal)
+
+                // Update Button
+                Button(action: {
+                    checkAndUpdateLineLength()
+                }) {
+                    Text("Update")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(blueColor)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+                .padding(.horizontal)
+                .padding(.top, 20)
+
+                Spacer()
             }
-            .background(goldColor.edgesIgnoringSafeArea(.all)) // Set the gold color as the background
+            .background(goldColor.edgesIgnoringSafeArea(.all))
+            // Force light mode
+            .preferredColorScheme(.light)
         }
     }
 
-    // Update the line length in Firebase Realtime Database
-    private func updateLineLength() {
-        let timestamp = Int(Date().timeIntervalSince1970) // Current Unix timestamp
+    private func checkAndUpdateLineLength() {
+        guard let user = Auth.auth().currentUser else {
+            errorMessage = "You must be signed in to update."
+            return
+        }
 
-        var path: String
+        let currentTime = Int(Date().timeIntervalSince1970)
+        let userId = user.uid
+        let placeKey: String
+
         switch selectedPlace {
         case "Panda Express":
-            path = "lineLengths/pandaExpress/latestUpdate"
+            placeKey = "pandaExpress"
         case "Chick-fil-A":
-            path = "lineLengths/chickFilA/latestUpdate"
+            placeKey = "chickFilA"
         case "Chuck's":
-            path = "lineLengths/chucks/latestUpdate"
+            placeKey = "chucks"
         default:
             return
         }
 
-        // Create a new update entry (overwrite the existing entry)
+        // Fetch the last update timestamp for the user
+        ref.child("userUpdates/\(userId)/\(placeKey)/lastUpdateTimestamp").observeSingleEvent(of: .value) { snapshot in
+            if let lastUpdateTimestamp = snapshot.value as? Int {
+                let timeSinceLastUpdate = currentTime - lastUpdateTimestamp
+                if timeSinceLastUpdate < 300 { // 300 seconds = 5 minutes
+                    self.errorMessage = "You can only update the line every 5 minutes."
+                    return
+                }
+            }
+            // Allow the update
+            self.updateLineLength(for: placeKey, userId: userId, currentTime: currentTime)
+        }
+    }
+
+    private func updateLineLength(for placeKey: String, userId: String, currentTime: Int) {
         let newUpdate: [String: Any] = [
             "lineLength": newLineLength,
-            "timestamp": timestamp
+            "timestamp": currentTime
         ]
-
-        // Overwrite the latest update in Firebase under the correct place
-        ref.child(path).setValue(newUpdate) { error, _ in
+        
+        // Update the line length
+        ref.child("lineLengths/\(placeKey)/latestUpdate").setValue(newUpdate) { error, _ in
             if let error = error {
-                print("Error updating line length: \(error.localizedDescription)")
+                self.errorMessage = "Error updating line length: \(error.localizedDescription)"
             } else {
-                print("\(selectedPlace) line length updated successfully.")
+                // Update the user's last update timestamp
+                ref.child("userUpdates/\(userId)/\(placeKey)/lastUpdateTimestamp").setValue(currentTime) { error, _ in
+                    if let error = error {
+                        self.errorMessage = "Error saving last update time: \(error.localizedDescription)"
+                    } else {
+                        self.errorMessage = "Line length updated successfully."
+                    }
+                }
             }
         }
     }

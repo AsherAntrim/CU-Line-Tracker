@@ -1,5 +1,7 @@
 import SwiftUI
 import FirebaseDatabase
+import FirebaseAuth
+
 
 struct LineLengthView: View {
     @Binding var pandaExpressLine: Int

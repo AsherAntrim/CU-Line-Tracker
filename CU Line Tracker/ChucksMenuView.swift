@@ -7,6 +7,8 @@
 
 import SwiftUI
 import WebKit
+import FirebaseAuth
+
 
 // Define custom colors for Gold and Blue
 let goldColor = Color(red: 231/255, green: 164/255, blue: 60/255) // Gold
