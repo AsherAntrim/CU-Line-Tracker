@@ -1,138 +1,128 @@
 import SwiftUI
-import FirebaseAuth
 
 struct AuthView: View {
+    @EnvironmentObject var viewModel: AppViewModel
+    
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
     @State private var isSignUp: Bool = false
-    @State private var errorMessage: String = ""
-
-    let goldColor = Color(red: 231/255, green: 164/255, blue: 60/255) // Gold
-    let blueColor = Color(red: 23/255, green: 37/255, blue: 54/255) // Blue
-
+    
     var body: some View {
         ZStack {
-            // Gold background
-            goldColor
-                .edgesIgnoringSafeArea(.all) // This makes sure the background fills the entire screen
-
+            // Background color
+            AppColors.gold.edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 20) {
-                Spacer() // Pushes the content towards the center
-
-                // Main heading
+                // Title
                 Text(isSignUp ? "Sign Up" : "Sign In")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(blueColor)
-
-                // Email input field
-                TextField("Email", text: $email)
-                    .autocapitalization(.none)
-                    .padding()
-                    .background(Color.white.opacity(0.9))
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-
-                // Password input field
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color.white.opacity(0.9))
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-
-                if !errorMessage.isEmpty {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                        .font(.caption)
-                        .padding()
-                }
-
-                // Sign In / Sign Up button
-                Button(action: {
-                    isSignUp ? signUp() : signIn()
-                }) {
-                    Text(isSignUp ? "Sign Up" : "Sign In")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(blueColor)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                }
-
-                // Toggle between sign up and sign in
-                Button(action: {
-                    isSignUp.toggle()
-                }) {
-                    Text(isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up")
-                        .font(.footnote)
-                        .foregroundColor(blueColor)
-                }
-
-                // Resend verification email for signed-in users
-                if !isSignUp {
-                    Button(action: {
-                        sendEmailVerification()
-                    }) {
-                        Text("Resend Verification Email")
-                            .font(.footnote)
-                            .foregroundColor(blueColor)
+                    .foregroundColor(AppColors.blue)
+                    .padding(.top, 40)
+                
+                // Input Fields
+                VStack(spacing: 16) {
+                    // Email Input
+                    customTextField(
+                        placeholder: "Email (@cedarville.edu)",
+                        text: $email,
+                        isSecure: false
+                    )
+                    
+                    // Password Input
+                    customTextField(
+                        placeholder: "Password",
+                        text: $password,
+                        isSecure: true
+                    )
+                    
+                    // Confirm Password (Sign Up Only)
+                    if isSignUp {
+                        customTextField(
+                            placeholder: "Confirm Password",
+                            text: $confirmPassword,
+                            isSecure: true
+                        )
                     }
                 }
-
-                Spacer() // Pushes the content towards the center
+                .padding(.horizontal)
+                
+                // Error Message
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(.red)
+                        .font(.caption)
+                        .padding(.horizontal)
+                }
+                
+                // Loading Indicator
+                if viewModel.isLoading {
+                    ProgressView("Please wait...")
+                        .progressViewStyle(CircularProgressViewStyle(tint: AppColors.blue))
+                        .padding()
+                } else {
+                    // Sign In/Sign Up Button
+                    Button(action: {
+                        if isSignUp {
+                            viewModel.signUp(email: email, password: password, confirmPassword: confirmPassword)
+                        } else {
+                            viewModel.signIn(email: email, password: password)
+                        }
+                    }) {
+                        Text(isSignUp ? "Sign Up" : "Sign In")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(AppColors.blue)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
+                    }
+                    .padding(.horizontal)
+                }
+                
+                // Toggle Between Sign In/Sign Up
+                Button(action: { isSignUp.toggle() }) {
+                    Text(isSignUp ? "Already have an account? Sign In" : "Don't have an account? Sign Up")
+                        .font(.footnote)
+                        .foregroundColor(AppColors.blue)
+                        .padding()
+                }
+                
+                Spacer()
             }
-            .padding() // Padding to avoid content hitting the edges
+            .padding()
         }
+        .navigationTitle("Cedarville Line Tracker")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
-    private func signIn() {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                errorMessage = error.localizedDescription
+    // Custom TextField Component
+    private func customTextField(placeholder: String, text: Binding<String>, isSecure: Bool) -> some View {
+        ZStack(alignment: .leading) {
+            if text.wrappedValue.isEmpty {
+                Text(placeholder)
+                    .foregroundColor(.black.opacity(0.6)) // Darker placeholder color for visibility
+                    .font(.system(size: 16, weight: .medium)) // Increased font weight for better readability
+                    .padding(.leading, 15)
+            }
+            if isSecure {
+                SecureField("", text: text)
+                    .padding()
+                    .foregroundColor(AppColors.blue) // Text color
+                    .background(Color.white.opacity(0.9))
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(AppColors.blue, lineWidth: 1))
             } else {
-                if let user = Auth.auth().currentUser, !user.isEmailVerified {
-                    errorMessage = "Please verify your email address."
-                } else {
-                    errorMessage = ""
-                    print("Signed in!")
-                }
+                TextField("", text: text)
+                    .padding()
+                    .foregroundColor(AppColors.blue) // Text color
+                    .background(Color.white.opacity(0.9))
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(AppColors.blue, lineWidth: 1))
             }
         }
-    }
-
-    private func signUp() {
-        guard email.hasSuffix("@cedarville.edu") else {
-            errorMessage = "You must use a Cedarville University email address."
-            return
-        }
-
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                errorMessage = error.localizedDescription
-            } else {
-                errorMessage = ""
-                sendEmailVerification()
-            }
-        }
-    }
-
-    private func sendEmailVerification() {
-        if let user = Auth.auth().currentUser {
-            user.sendEmailVerification { error in
-                if let error = error {
-                    errorMessage = "Failed to send verification email: \(error.localizedDescription)"
-                } else {
-                    errorMessage = "Verification email sent. Please check your inbox."
-                }
-            }
-        }
-    }
-}
-
-struct AuthView_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthView()
+        .frame(height: 50) // Ensures a consistent height
     }
 }

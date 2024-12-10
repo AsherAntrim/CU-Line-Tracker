@@ -2,18 +2,13 @@ import SwiftUI
 import FirebaseAuth
 
 struct ContentView: View {
-    @State private var pandaExpressLine: Int = 0
-    @State private var chickFilALine: Int = 0
-    @State private var chucksLine: Int = 0
-    @State private var user: User? = nil
-    @State private var isEmailVerified: Bool = false
-    @State private var isShowingVerificationPrompt = false
-
+    @EnvironmentObject var viewModel: AppViewModel
+    
     var body: some View {
         Group {
-            if let user = user {
-                if isEmailVerified {
-                    authenticatedView
+            if let user = viewModel.currentUser {
+                if viewModel.isEmailVerified {
+                    mainTabView
                 } else {
                     emailVerificationView
                 }
@@ -21,20 +16,17 @@ struct ContentView: View {
                 AuthView()
             }
         }
-        .onAppear {
-            checkAuthentication()
-        }
     }
-
-    var authenticatedView: some View {
+    
+    var mainTabView: some View {
         TabView {
-            LineLengthView(pandaExpressLine: $pandaExpressLine, chickFilALine: $chickFilALine, chucksLine: $chucksLine)
+            LineLengthView()
                 .tabItem {
                     Image(systemName: "list.number")
                     Text("View Lines")
                 }
             
-            InputLengthView(pandaExpressLine: $pandaExpressLine, chickFilALine: $chickFilALine, chucksLine: $chucksLine)
+            InputLengthView()
                 .tabItem {
                     Image(systemName: "pencil")
                     Text("Update Length")
@@ -46,37 +38,44 @@ struct ContentView: View {
                     Text("Chuck's Menu")
                 }
 
-            AccountView()
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Account")
-                }
+            VStack {
+                AccountView()
+            }
+            .tabItem {
+                Image(systemName: "person.fill")
+                Text("Account")
+            }
         }
     }
-
+    
     var emailVerificationView: some View {
         VStack(spacing: 20) {
             Text("Email Verification Required")
                 .font(.title)
                 .padding()
-
-            Text("A verification email has been sent to \(user?.email ?? "your email"). Please check your inbox.")
+            
+            Text("A verification email has been sent to \(viewModel.currentUser?.email ?? "your email"). Please check your inbox.")
                 .padding()
-
-            Button(action: {
-                resendVerificationEmail()
-            }) {
-                Text("Resend Verification Email")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
+            
+            if viewModel.isLoading {
+                ProgressView("Sending email...")
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+            } else {
+                Button(action: {
+                    viewModel.resendVerificationEmail()
+                }) {
+                    Text("Resend Verification Email")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(AppColors.blue)
+                        .cornerRadius(10)
+                }
             }
-
+            
             Button(action: {
-                signOut()
+                viewModel.signOut()
             }) {
                 Text("Sign Out")
                     .font(.headline)
@@ -86,51 +85,13 @@ struct ContentView: View {
                     .background(Color.red)
                     .cornerRadius(10)
             }
+            
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
+                    .foregroundColor(.red)
+                    .font(.caption)
+            }
         }
         .padding()
-    }
-
-    private func checkAuthentication() {
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if let user = user {
-                if user.email?.hasSuffix("@cedarville.edu") ?? false {
-                    self.user = user
-                    self.isEmailVerified = user.isEmailVerified
-                } else {
-                    // Sign out if email is not a Cedarville one
-                    try? Auth.auth().signOut()
-                    self.user = nil
-                }
-            } else {
-                self.user = nil
-            }
-        }
-    }
-
-    private func resendVerificationEmail() {
-        if let user = Auth.auth().currentUser {
-            user.sendEmailVerification { error in
-                if let error = error {
-                    print("Failed to send verification email: \(error.localizedDescription)")
-                } else {
-                    print("Verification email sent.")
-                }
-            }
-        }
-    }
-
-    private func signOut() {
-        do {
-            try Auth.auth().signOut()
-            self.user = nil
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
