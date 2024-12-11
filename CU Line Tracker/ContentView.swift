@@ -32,7 +32,7 @@ struct ContentView: View {
                     Text("Update Length")
                 }
 
-            ChucksMenuView()
+            MenuView()
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text("Chuck's Menu")

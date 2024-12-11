@@ -1,8 +1,8 @@
 import SwiftUI
-import FirebaseAuth
 
 struct AccountView: View {
     @EnvironmentObject var viewModel: AppViewModel
+    @State private var showDeleteConfirmation = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -51,6 +51,28 @@ struct AccountView: View {
                     .shadow(radius: 5)
             }
             .padding(.horizontal)
+            
+            Button(action: { showDeleteConfirmation = true }) {
+                Text("Delete Account")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.red)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+            }
+            .padding(.horizontal)
+            .alert(isPresented: $showDeleteConfirmation) {
+                Alert(
+                    title: Text("Delete Account"),
+                    message: Text("Are you sure you want to delete your account? This action cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        viewModel.deleteAccount()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
             
             Spacer()
         }

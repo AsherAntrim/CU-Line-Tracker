@@ -139,6 +139,20 @@ class AppViewModel: ObservableObject {
             LineData(place: "The Café", lineLength: 0, lastUpdated: "")
         ]
     
+    func deleteAccount() {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        isLoading = true
+        user.delete { [weak self] error in
+            defer { self?.isLoading = false }
+            if let error = error {
+                self?.errorMessage = "Failed to delete account: \(error.localizedDescription)"
+            } else {
+                self?.signOut()
+            }
+        }
+    }
+    
     private func fetchLineLength(for place: String,
                                  binding: ReferenceWritableKeyPath<AppViewModel, Int>,
                                  lastUpdatedBinding: ReferenceWritableKeyPath<AppViewModel, String>) {
